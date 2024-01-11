@@ -58,16 +58,30 @@ public class App {
      * Hint: Map.merge() - One method to rule them all
      * https://nurkiewicz.com/2019/03/mapmerge-one-method-to-rule-them-all.html
      */
-    static <> void {
+        static void incrementByOneWildcard(Map<?, Integer> map, Object key) {
+        map.merge(key, 1, Integer::sum);
     }
 
-    static void {
+    /**
+     * Type parameter implementation
+     */
+    static <E extends Enum<E>> void incrementByOneTypeParam(Map<E, Integer> map, E key) {
+        map.merge(key, 1, Integer::sum);
     }
 
-    static <> void {
+    /**
+     * Wildcard implementation with default value
+     */
+    static void incrementByOneWithDefaultWildcard(Map<?, Integer> map, Object key, int defaultValue) {
+        map.merge(key, 1, Integer::sum);
     }
 
-    static void {
+    /**
+     * Type parameter implementation with default value
+     */
+    static <E extends Enum<E>> void incrementByOneWithDefaultTypeParam(Map<E, Integer> map, E key, int defaultValue) {
+        map.merge(key, 1, Integer::sum);
     }
+
 }
 
